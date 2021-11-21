@@ -18,20 +18,23 @@ intents.members = True
 bot =commands.Bot(command_prefix='!',intents = intents)
 
 
+@bot.command()
+async def ping(ctx):
+  await ctx.send(f'{round(bot.latency*1000)}(ms)')
+
+
 @bot.event
 async def on_ready():
   print('>>Bot Online:',bot.user,'<<')
   await bot.change_presence(activity=discord.Streaming(name="LIFE 2.O", url='https://www.youtube.com/watch?v=dQw4w9WgXcQ'))
 
 
-@bot.command()
-async def ping(ctx):
-  await ctx.send(f'{round(bot.latency*1000)}(ms)')
-
 @bot.event
 async def on_typing(channel, user, when):
   #channel = bot.get_channel(channelID)
-  await channel.send(f'{user.mention} 打什麼字可以打那麼久!')
+  response = await channel.send(f'{user.mention} 打什麼字可以打那麼久!')
+  #response.delete()
+
 
 @bot.event
 async def on_member_join(member):
