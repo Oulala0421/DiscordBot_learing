@@ -31,17 +31,17 @@ async def ping(ctx):
 @bot.event
 async def on_typing(channel, user, when):
   #channel = bot.get_channel(channelID)
-  await channel.send(f'{user} FQ!')
+  await channel.send(f'{user.mention} 打什麼字可以打那麼久!')
 
 @bot.event
 async def on_member_join(member):
   channel = bot.get_channel(channelID)
-  await channel.send(f'{member} join!')
+  await channel.send(f'{member.mention} join!')
 
 @bot.event
 async def on_member_remove(member):
   channel = bot.get_channel(channelID)
-  await channel.send(f'{member} leave!')
+  await channel.send(f'{member.mention} leave!')
 
 
 
